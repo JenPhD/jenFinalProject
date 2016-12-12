@@ -1,0 +1,56 @@
+{
+  "name": "jenfinalproject",
+  "version": "1.0.0",
+  "description": "volunteer trip planner",
+  "main": "server.js",
+  "bin": {
+    "jenfinalproject": "www.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JenPhD/jenFinalProject.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "express",
+    "node",
+    "jquery",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "jen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JenPhD/jenFinalProject/issues"
+  },
+  "homepage": "https://github.com/JenPhD/jenFinalProject#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.1",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "cheerio": "^0.22.0",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.3.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.2",
+    "handlebars": "^4.0.6",
+    "http": "0.0.0",
+    "method-override": "^2.3.7",
+    "mocha": "^3.2.0",
+    "mongodb": "^2.2.15",
+    "mongojs": "^2.4.0",
+    "mongoose": "^4.7.2",
+    "mongoose-model-cli": "^1.4.0",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "request": "^2.79.0",
+    "serve-favicon": "^2.3.2"
+  }
+}
