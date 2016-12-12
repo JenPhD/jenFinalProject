@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var router = express.Router();
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://localhost/27107/awesamsara');
+mongoose.connect('mongodb://localhost/27107/finalproject');
 var db = mongoose.connection;
 
 //this is the trips_controller.js file

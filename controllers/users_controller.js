@@ -1,5 +1,5 @@
 //require bcrypt for authentication/hashing and salting of passwords
-var bcrypt = require('bcryptjs');
+var bcrypt = require('bcrypt');
 var User = require('../models/User');
 var mongoose = require('mongoose');
 var express = require('express');

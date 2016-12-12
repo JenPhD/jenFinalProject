@@ -8,7 +8,7 @@
 // rather than having them take up space in server.js.
 //Dependencies
 var app = require('../server');
-var debug = require('debug')('cheerscrape:server');
+var debug = require('debug')('jenfinalproject:server');
 var http = require('http');
 
 //get port from env, store in express app

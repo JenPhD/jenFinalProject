@@ -19,8 +19,9 @@ var app = express();
 //MongoClient.connect(mongoDBURL, function(){});
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://localhost/27107/awesamsara');
-var db = mongoose.connection;
+var db = mongoose.createConnection('mongodb://localhost/27107/finalproject');
+
+mongoose.Promise = global.Promise;
 
 // show any mongoose errors
 db.on('error', function(err) {
@@ -127,6 +128,6 @@ module.exports = app;
 
 
 // listen on port 3000
-// app.listen(3000, function() {
-//     console.log('App running on port 3000!');
-// });
+app.listen(3000, function() {
+    console.log('App running on port 3000!');
+});
