@@ -1,37 +1,36 @@
 // require mongoose
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+//require Trip Schema
+const Trip = require('./Trip');
 // create Schema class
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-// Create article schema
-var UserSchema = new Schema({
+// Create user schema
+const UserSchema = new Schema({
     // name is required
     name: {
-        type:String,
+        type: String,
         trim: true,
-        required:"Username is required"
+        required: "Username is required"
     },
     // email is required
     email: {
-        type:String,
-        unique:true,
+        type: String,
+        unique: true,
         required: "Email is required",
         match: [/.+\@.+\..+/, "Please enter a valid e-mail address"]
     },
     // pwdhash is required
     pwdhash: {
-        type:String,
+        type: String,
         required: "Password is required"
     },
-    // this only saves one trip's ObjectId. ref refers to the Trip model.
-    trip: {
-        type: Schema.Types.ObjectId,
-        ref: 'Trip'
-    }
+    // refers to the trip schema, trips are stored as array of objects
+    trips: [ Trip ]
 });
 
 // Create the User model with the UserSchema
-var User = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
 
 // export the model
 module.exports = User;

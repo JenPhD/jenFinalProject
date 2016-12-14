@@ -1,10 +1,10 @@
 //require bcrypt for authentication/hashing and salting of passwords
-var bcrypt = require('bcrypt');
-var User = require('../models/User');
-var mongoose = require('mongoose');
-var express = require('express');
-var router  = express.Router();
-console.log('User::', User);
+const bcrypt = require('bcrypt');
+const User = require('../models/User');
+const mongoose = require('mongoose');
+const express = require('express');
+const router  = express.Router();
+//console.log('User::', User);
 
 //this is the users_controller.js file
 //Get, renders sign up for new users
@@ -76,12 +76,12 @@ router.post('/create', function(req,res) {
 
                     // Using the User model, create a new user,
                     // storing the email they sent and the hash you just made
-                    var newUser = new User({
+                    const User = new User({
                         name: req.body.name,
                         email: req.body.emal,
                         pwdhash: hash
                     });
-                    newUser.save(function(err){
+                    User.save(function(err){
                             //enter the user's session by setting properties to req.
                             //save the logged in status to the session
                             req.session.logged_in = true;

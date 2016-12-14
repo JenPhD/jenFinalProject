@@ -1,40 +1,40 @@
 // require mongoose
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // create Schema class
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-// Create article schema
-var TripSchema = new Schema({
+// Create trip schema
+const TripSchema = new Schema({
     // departure city
     depcity: {
-        type:String,
+        type: String,
         required:true
     },
     //destination city
     destcity: {
-        type:String,
+        type: String,
         required:true
     },
     //depart date
     departdate: {
-        type:Date,
+        type: Date,
         required:true
     },
     //return date
     returndate: {
-        type:Date,
+        type: Date,
         required:true
     },
-
-    // this only saves one user's ObjectId. ref refers to the User model.
-    email: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+    //number of volunteers
+    numvol: {
+        type: Number
+    },
+    //has saved itinerary or not
+    itinerary: {
+        type: Boolean,
+        default: false
     }
 });
 
-// Create the Trip model with the TripSchema
-var Trip = mongoose.model('Trip', TripSchema);
-
-// export the model
+// export the schema
 module.exports = Trip;

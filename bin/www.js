@@ -1,22 +1,20 @@
 #!/usr/bin/env node
-
-
 // Express can launch a www executable to handle certain tasks.
 // www goes in bin (sometimes .bin to keep it hidden)
 
 // This way, we can set certain properties here
 // rather than having them take up space in server.js.
 //Dependencies
-var app = require('../server');
-var debug = require('debug')('jenfinalproject:server');
-var http = require('http');
+const app = require('../server');
+const debug = require('debug')('jenfinalproject:server');
+const http = require('http');
 
 //get port from env, store in express app
-var port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 //create http server
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 //Listen on port, all network interfaces
 server.listen(port);
@@ -25,7 +23,7 @@ server.on('listening', onListening);
 
 //Normalize a port into a number, string, or false
 function normalizePort(val) {
-	var port = parseInt(val, 10);
+	const port = parseInt(val, 10);
 
 	// Named pipe
 	if (isNaN(port))
@@ -43,7 +41,7 @@ function onError(error) {
 	if (error.syscall !== 'listen')
 		throw error;
 
-	var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+	const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
 	// Friendly messages for specific listener errors
 	switch (error.code) {
@@ -62,7 +60,7 @@ function onError(error) {
 
 //Event listener for http server 'listening' event
 function onListening() {
-	var addr = server.address();
-	var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+	const addr = server.address();
+	const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
 	debug('Listening on ' + bind);
 }
