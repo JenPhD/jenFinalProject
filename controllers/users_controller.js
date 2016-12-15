@@ -14,11 +14,11 @@ router.get('/new', function(req,res) {
 
 //Get, renders sign in for users with account
 router.get('/sign-in', function(req,res) {
-    res.render('users/sign_in');
+    res.render('users/sign-in');
 });
 
 //Get, redirects to home on sign-out
-router.get('/sign-out', function(req,res) {
+router.get('/sign-out', function(req,res) {ß
     req.session.destroy(function(err) {
         res.redirect('/')
     })
@@ -28,14 +28,17 @@ router.get('/sign-out', function(req,res) {
 // login for users with account, matches with email and redirects to
 //sign-in
 router.post('/login', function(req, res) {
-    User.find({
-        email: req.body.email
-    }).then(function (user) {
-        if (user == null) {
+    User.findOne(
+        { email: req.body.email }
+    ).then(function (user) {
+        console.log('logging in :: ', user);
+        if (!user) {
             res.redirect('/users/sign-in')
         } else {
+            console.log('compare passwords')
             // Use bcrypt to compare the user's password input
             bcrypt.compare(req.body.password, user.pwdhash, function (err, result) {
+                console.log('comparing', err, result);
                 // if the result is true (and thus pass and hash match)
                 if (result == true) {
                     // save the user's information to req.session
@@ -64,7 +67,7 @@ router.post('/create', function(req,res) {
     User.find(
         { email: req.body.email }
     ).then(function(users) {
-
+        console.log('POST CREATE', users);
         if (users.length > 0){
             console.log(users);
             res.send("We already have an email or username for this account");
@@ -76,12 +79,14 @@ router.post('/create', function(req,res) {
 
                     // Using the User model, create a new user,
                     // storing the email they sent and the hash you just made
-                    const User = new User({
+                    const newUser = new User({
                         name: req.body.name,
-                        email: req.body.emal,
+                        email: req.body.email,
                         pwdhash: hash
                     });
-                    User.save(function(err){
+                    console.log('newUser::', newUser);
+                    newUser.save(function(err){
+                        console.log('saving user', err);
                             //enter the user's session by setting properties to req.
                             //save the logged in status to the session
                             req.session.logged_in = true;

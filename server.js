@@ -112,7 +112,4 @@ app.use(function(err, req, res) {
 module.exports = app;
 
 //listener in bin/www
-// listen on port 3000
-// app.listen(3000, function() {
-//     console.log('App running on port 3000!');
-// });
+

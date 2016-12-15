@@ -33,8 +33,15 @@ const TripSchema = new Schema({
     itinerary: {
         type: Boolean,
         default: false
+    },
+    // this only saves one user's ObjectId. ref refers to the User model.
+    email: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
+// Create the Trip model with the TripSchema
+const Trip = mongoose.model('Trip', TripSchema);
 
 // export the schema
 module.exports = Trip;
