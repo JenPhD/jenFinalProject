@@ -14,8 +14,7 @@ const db = mongoose.connection;
 //Redirecting user on click until saving info from API
 //Get, renders volunteer opportunities
 router.get('/volunteer', function(req,res) {
-    res.render('trips/volunteer', {
-    });
+    res.render('trips/volunteer');
 });
 
 //Get, renders flights

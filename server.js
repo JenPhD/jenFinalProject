@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const favicon = require('serve-favicon');
 const session = require('express-session');
+const https = require('https');
 
 //instantiate app
 const app = express();

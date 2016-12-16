@@ -26,10 +26,10 @@ const UserSchema = new Schema({
         required: "Password is required"
     },
     // refers to the trip schema, trips are stored as array of objects
-    trip: {
+    trips: [{
         type: Schema.Types.ObjectId,
         ref: 'Trip'
-    }
+    }]
 });
 
 // Create the User model with the UserSchema

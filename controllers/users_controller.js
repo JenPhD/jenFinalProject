@@ -18,7 +18,7 @@ router.get('/sign-in', function(req,res) {
 });
 
 //Get, redirects to home on sign-out
-router.get('/sign-out', function(req,res) {ß
+router.get('/sign-out', function(req,res) {
     req.session.destroy(function(err) {
         res.redirect('/')
     })
@@ -31,11 +31,11 @@ router.post('/login', function(req, res) {
     User.findOne(
         { email: req.body.email }
     ).then(function (user) {
-        console.log('logging in :: ', user);
+        //console.log('logging in :: ', user);
         if (!user) {
             res.redirect('/users/sign-in')
         } else {
-            console.log('compare passwords')
+            //console.log('compare passwords');
             // Use bcrypt to compare the user's password input
             bcrypt.compare(req.body.password, user.pwdhash, function (err, result) {
                 console.log('comparing', err, result);
