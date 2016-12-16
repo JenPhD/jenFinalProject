@@ -14,21 +14,24 @@ const app = express();
 //MongoClient.connect(mongoDBURL, function(){});
 
 // Database configuration with mongoose
-const db = mongoose.createConnection('mongodb://localhost/27107/finalproject');
+const db = 'mongodb://localhost/finalproject';
 
-mongoose.Promise = global.Promise;
+//Connect the directory to mongoose
 
 // show any mongoose errors
-db.on('error', function(err) {
-    console.log('Mongoose Error: ', err);
+mongoose.connect(db, function(err){
+    // log any errors connecting with mongoose
+    if(err){
+        console.log('Mongoose Error: ', err);
+    }
+    // or log a success message
+    else {
+        console.log('Mongoose connection is successful!');
+    }
 });
 
-// once logged in to the db through mongoose, log a success message
-db.once('open', function() {
-    console.log('Mongoose connection successful.');
-});
 
-// And we bring in our models/collections
+// Bring in our models/collections
 const Trip = require('./models/Trip.js');
 const User = require('./models/User.js');
 
