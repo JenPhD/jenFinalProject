@@ -42,6 +42,7 @@
     "express-session": "^1.14.2",
     "handlebars": "^4.0.6",
     "http": "0.0.0",
+    "https": "^1.0.0",
     "method-override": "^2.3.7",
     "mocha": "^3.2.0",
     "mongodb": "^2.2.15",

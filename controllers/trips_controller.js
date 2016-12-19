@@ -3,10 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 
-// Database configuration with mongoose
-mongoose.connect('mongodb://localhost/27107/finalproject');
-const db = mongoose.connection;
-
 //this is the trips_controller.js file
 // =================================================================
 // Routes
@@ -14,8 +10,7 @@ const db = mongoose.connection;
 //Redirecting user on click until saving info from API
 //Get, renders volunteer opportunities
 router.get('/volunteer', function(req,res) {
-    res.render('trips/volunteer', {
-    });
+    res.render('trips/volunteer');
 });
 
 //Get, renders flights
