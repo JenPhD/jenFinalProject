@@ -80,7 +80,8 @@ const cities=["Aberdeen, SD","Abilene, TX","Akron, OH","Alamosa, CO","Albany, GA
 //============================================================================================
 //Create the query URL based on user destination.
 
-$('#volButton').click(function () {
+$(document).on('click', '#volButton', function (e) {
+    e.preventDefault();
     const volunteerAPIkey = "9560bbac6e597a4e08e3d82094ba5da2";
     // authentication headers for API requests
     const authenticationHeaders = {
@@ -104,81 +105,78 @@ $('#volButton').click(function () {
     //first empty the div with any previous search results
     //$('.trip').empty();
 
-    //Show header for volunteer opportunities, scroll buttons, flights, and hotel submit button
-    $('.volOpp').show();
-    $('.scroll').show();
-
     //Build the queryURL with the query URL base and the search terms --the destination (and trip dates?)
     const queryURL = queryURLBase + "&key=" + volunteerAPIkey + "&query=" + JSON.stringify(volSearch);
     //GET function to retrieve information about the volunteer opportunities from the volunteer match API
     //with an AJAX call
-
-    $.ajax({url: queryURL, method: 'GET'}).done(function (response) {
-        console.log('after ajax::', response);
+    $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
         //Make a variable that stores the JSON from the volunteer match API
-        const volMatch = response.opportunities;
+        var volMatch = response.opportunities;
         console.log(volMatch);
         //For loop for the city in the volunteer opportunities array.
-        volMatch.forEach(function (vol) {
+        for (var j = 0; j < volMatch.length; j++) {
             //Create a new div for the volunteer opportunities
-            const volResults = $('<div class="trip">');
-            //Add the volunteer opportunities
+            var volResults = $('<div class="trip">');
+            $('#vol').append(volResults);
+            // /Add the volunteer opportunities
             //Title of volunteer opportunity
-            const oppTitle = $('<h3 id="volTitle">').html(volMatch[vol].title);
+            var oppTitle = $('<h3 id="volTitle">').html(volMatch[j].title);
             //Appending to volResults
             volResults.append(oppTitle);
             //End date
-            if (volMatch[vol].availability.endDate == null) {
-                const endingDate = $('<div class="row" id="end">').text("End Date: Ongoing");
+            if (volMatch[j].availability.endDate == null) {
+                var endingDate = $('<div class="row" id="end">').text("End Date: Ongoing");
             }
             else {
-                const endingDate = $('<div class="row" id="end">').text("End Date: " + volMatch[vol].availability.endDate);
+                var endingDate = $('<div class="row" id="end">').text("End Date: " + volMatch[j].availability.endDate);
             }
             //Appending to the title
             volResults.append(endingDate);
             //Organization name appending to end date
-            const orgName = $('<div class="row" id="org">').text(volMatch[vol].parentOrg.name);
+            var orgName = $('<div class="row" id="org">').text(volMatch[j].parentOrg.name);
             volResults.append(orgName);
             //Adding location appending to organization name
-            const loc = $('<div class="row" id="location">').text(volMatch[vol].location.city + ", " + volMatch[vol].location.region);
+            var loc = $('<div class="row" id="location">').text(volMatch[j].location.city + ", " + volMatch[j].location.region);
             volResults.append(loc);
             //Images URL is encoded. Decoding the url and replacing empty picture with placeholder.
-            if (volMatch[vol].imageUrl == null) {
-                const imgURL = $('<img src="assets/images/noImage.jpg">')
+            if (volMatch[j].imageUrl == null) {
+                var imgURL = $('<img src="/assets/img/noImage.jpg">')
                     .addClass('volImg');
             }
             else {
-                const encImgURL = volMatch[vol].imageUrl;
-                const decImgURL = decodeURIComponent(encImgURL);
-                const imgURL = $('<img>')
+                var encImgURL = volMatch[j].imageUrl;
+                var decImgURL = decodeURIComponent(encImgURL);
+                var imgURL = $('<img>')
                     .addClass('volImg')
                     .attr('src', decImgURL);
             }
             //Create new row for images
-            const imgRow = $('<div class="row" id="orgImg">').html(imgURL);
+            var imgRow = $('<div class="row" id="orgImg">').html(imgURL);
             volResults.append(imgRow);
             //Description of volunteer opportunity
-            const orgDescription = $('<div class="row" id="description">').text(volMatch[vol].plaintextDescription);
+            var orgDescription = $('<div class="row" id="description">').text(volMatch[j].plaintextDescription);
             volResults.append(orgDescription);
             //Volunteer Match URL
-            const encMatchURL = volMatch[vol].vmUrl;
-            const decMatchURL = decodeURIComponent(encMatchURL);
-            const matchURL = $('<a>Click here for more information!</a>')
+            var encMatchURL = volMatch[j].vmUrl;
+            var decMatchURL = decodeURIComponent(encMatchURL);
+            var matchURL = $('<a>Click here for more information!</a>')
                 .addClass('.volMatchURL')
                 .attr('href', decMatchURL)
-                .attr("target", "_blank");
-            const linkRow = $('<div class="row" id="link">').html(matchURL);
+                .attr("target","_blank");
+            var linkRow = $('<div class="row" id="link">').html(matchURL);
             orgDescription.append(linkRow);
             // Putting 5 volunteer opportunities in each column
-            if (j < 5) {
+            if(j < 5) {
                 $('#volCol1').append(volResults);
             }
             else {
                 $('#volCol2').append(volResults);
             }
-        });
+        }
         //Clear the textboxes when done
+
     });
+
 
 });
 
