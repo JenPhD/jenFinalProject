@@ -81,6 +81,7 @@ const cities=["Aberdeen, SD","Abilene, TX","Akron, OH","Alamosa, CO","Albany, GA
 //Create the query URL based on user destination.
 
 $(document).on('click', '#volButton', function (e) {
+    //this line of code prevents the submission of form data on click since the button in a form
     e.preventDefault();
     const volunteerAPIkey = "9560bbac6e597a4e08e3d82094ba5da2";
     // authentication headers for API requests
