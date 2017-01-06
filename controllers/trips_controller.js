@@ -45,6 +45,18 @@ router.get('/hotels', function(req,res) {
     });
 });
 
+//Get, renders hotels
+router.get('/saved_itinerary', function(req,res) {
+    res.render('trips/saved_itinerary', {
+        //keep logged_in
+        logged_in: req.session.logged_in,
+        // the username to the session
+        name: req.session.name,
+        // and the user's email.
+        email: req.session.email
+    });
+});
+
 
 //Use the Trip model to find the trip search terms for the trip saved by a user.
 //Where the id is the user id of the logged in user
