@@ -135,6 +135,20 @@ p.sign{
 	padding:20px;
 }
 
+a#homePage{
+	color: white;
+	padding-left: 15px;
+	font-size: 24px;
+}
+
+iframe{
+	margin: 0;
+	padding: 0;
+	height: 800px;
+	width: 100%;
+	overflow: hidden;
+}
+
 @media(max-width:850px){
 	.mainContent{
 		height:400px;
