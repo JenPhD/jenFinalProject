@@ -137,8 +137,8 @@ p.sign{
 
 a#homePage{
 	color: white;
-	padding-left: 15px;
-	font-size: 24px;
+	font-size: 32px;
+	float: left;
 }
 
 iframe{
