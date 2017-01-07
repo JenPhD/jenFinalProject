@@ -64,6 +64,12 @@ a:active{
 	padding:5px;
 }
 
+.itinerary{
+	color:black;
+	font-size:24px;
+	padding:5px;
+}
+
 /*nav ul li{
 	display:inline-block;
 	padding: 20px;
