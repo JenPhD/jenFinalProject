@@ -1,5 +1,5 @@
 const Trip = require('../models/Trip');
-//const User = require('../models/User');
+const User = require('../models/User');
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
@@ -8,6 +8,7 @@ const router = express.Router();
 // =================================================================
 // Routes
 // =================================================================
+
 //Redirecting user on click until saving info from API
 //Get, renders volunteer opportunities
 router.get('/volunteer', function(req,res) {
@@ -45,16 +46,16 @@ router.get('/hotels', function(req,res) {
     });
 });
 
-//Get, renders hotels
-router.get('/saved_itinerary', function(req,res) {
-    res.render('trips/saved_itinerary', {
-        //keep logged_in
-        logged_in: req.session.logged_in,
-        // the username to the session
-        name: req.session.name,
-        // and the user's email.
-        email: req.session.email
-    });
+//Get, renders itineraries
+router.get('/itinerary', function(req,res) {
+  res.render('trips/itinerary', {
+    //keep logged_in
+    logged_in: req.session.logged_in,
+    // the username to the session
+    name: req.session.name,
+    // and the user's email.
+    email: req.session.email
+  });
 });
 
 
