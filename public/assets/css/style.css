@@ -141,6 +141,20 @@ p.sign{
 	padding:20px;
 }
 
+a#homePage{
+	color: white;
+	font-size: 32px;
+	float: left;
+}
+
+iframe{
+	margin: 0;
+	padding: 0;
+	height: 800px;
+	width: 100%;
+	overflow: hidden;
+}
+
 @media(max-width:850px){
 	.mainContent{
 		height:400px;
