@@ -62,27 +62,27 @@ router.get('/itinerary', function(req,res) {
 //Use the Trip model to save the trip itinerary.
 //Where the id is the user id of the logged in user
 //This will show the trip search terms for the trip.
-// router.get('/', function (req, res) {
-//     Trip.find (
-//         { '_id': req.params.id }
-//         //then...
-//         ).then(function(trips) {
-//             //grab the user info from our req.
-//             //This info gets saved to req via the users-controller.js file
-//             res.render('trips/itinerary', {
-//                 name: req.session.name,
-//                 email: req.session.email,
-//                 logged_in: req.session.logged_in,
-//                 depcity: req.session.depcity,
-//                 destcity: req.session.destcity,
-//                 departdate: req.session.departdate,
-//                 returndate: req.session.returndate,
-//                 numvol: req.session.numvol,
-//                 itinerary: req.session.itinerary,
-//                 trips: trips
-//             })
-//         })
-// });
+router.get('/', function (req, res) {
+    Trip.find (
+        { '_id': req.params.id }
+        //then...
+        ).then(function(trips) {
+            //grab the user info from our req.
+            //This info gets saved to req via the users-controller.js file
+            res.render('trips/itinerary', {
+                name: req.session.name,
+                email: req.session.email,
+                logged_in: req.session.logged_in,
+                depcity: req.session.depcity,
+                destcity: req.session.destcity,
+                departdate: req.session.departdate,
+                returndate: req.session.returndate,
+                numvol: req.session.numvol,
+                itinerary: req.session.itinerary,
+                trips: trips
+            })
+        })
+});
 
 
 //=================================================================================================
