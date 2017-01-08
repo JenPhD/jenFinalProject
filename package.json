@@ -31,7 +31,8 @@
   },
   "homepage": "https://github.com/JenPhD/jenFinalProject#readme",
   "dependencies": {
-    "bcrypt": "^1.0.1",
+    "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "cheerio": "^0.22.0",
