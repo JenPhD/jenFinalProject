@@ -1,7 +1,7 @@
 // require mongoose
 const mongoose = require('mongoose');
 //require Trip Schema
-const Trip = require('./Trip');
+const TripSchema = require('./Trip');
 // create Schema class
 const Schema = mongoose.Schema;
 
@@ -26,10 +26,7 @@ const UserSchema = new Schema({
         required: "Password is required"
     },
     // refers to the trip schema, trips are stored as array of objects
-    trips: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Trip'
-    }]
+    trips: [TripSchema]
 });
 
 // Create the User model with the UserSchema

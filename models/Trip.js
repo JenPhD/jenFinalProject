@@ -5,38 +5,61 @@ const Schema = mongoose.Schema;
 
 // Create trip schema
 const TripSchema = new Schema({
-    // departure city
-    depcity: {
+    // users origin
+    usersOrigin: {
         type: String,
         required:true
     },
     //destination city
-    destcity: {
+    usersDestination: {
         type: String,
         required:true
     },
     //depart date
-    departdate: {
+    departDate: {
         type: Date,
         required:true
     },
     //return date
-    returndate: {
+    returnDate: {
         type: Date,
         required:true
     },
+
+    //departing airline
+    departFly: String,
+
+    //departing flight number
+    flyNumber1: String,
+
+    //returning airline
+    returnFly: String,
+
+    //returning flight number
+    flyNumber2: String,
+
+    //hotel
+    hotel: String,
+
+    //hotel address
+    hotAddress: String,
+
+    //hotel phone
+    hotPhone: String,
+
+    //volunteer organization
+    volOrg: String,
+
+    //volunteer date
+    volDate: Date,
+
+    //organization address
+    volAddress: String,
+
     //number of volunteers
-    numvol: {
-        type: Number
-    },
-    //has saved itinerary or not
-    itinerary: {
-        type: Boolean,
-        default: false
-    }
+    volunteers: Number
 });
-// Create the Trip model with the TripSchema
-const Trip = mongoose.model('Trip', TripSchema);
+
 
 // export the schema
-module.exports = Trip;
+module.exports = TripSchema;

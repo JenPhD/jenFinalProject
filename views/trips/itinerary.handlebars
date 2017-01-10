@@ -1,4 +1,5 @@
- <div id="itinCreate" class="create-update-form" action="trips/itinerary/create" method="POST">
+{{#if logged_in}}
+<div id="itinCreate" class="create-update-form" action="trips/itinerary/create" method="POST">
 <div class="row">
     <a href="/" id="homePage"><i class="fa fa-home" aria-hidden="true"></i></a>
 </div>    
@@ -33,7 +34,7 @@
          <div class="form-group">
              <div class="row">
                  <div class="col-md-3">
-                     <label for="departFly">Depart Airline</label> <i class="fa fa-plane" aria-hidden="true"></i>
+                     <label for="departFly">Departing Airline</label> <i class="fa fa-plane" aria-hidden="true"></i>
                      <input type="text" name="departFly" class="form-control" id="departFly">
                 </div>
                  <div class="col-md-3">
@@ -82,8 +83,16 @@
              <input type="text" name="volAddress" class="form-control" id="volAddress">
          </div>
          <div class="col-md-3">
-             <label for="volPhone">Organization Phone </label> <i class="fa fa-phone" aria-hidden="true"></i>
-             <input type="text" name="volPhone" class="form-control" id="volPhone">
+             <label for="volunteers">Number of Volunteers </label> <i class="fa fa-users" aria-hidden="true"></i>
+             <select id="volunteers" name="volunteers" class="form-control">
+                 <option>1</option>
+                 <option>2</option>
+                 <option>3</option>
+                 <option>4</option>
+                 <option>5</option>
+                 <option>6</option>
+                 <option>more than 6</option> <!-- if more than six have user specify a number -->
+             </select>
          </div>
 
      </div>
@@ -96,43 +105,33 @@
 
 
     <div class="row">
-        <div id="saved" class="col-md-6">
-            <h2>Saved Trip</h2>
+        <div id="saved">
+            <h2>Your Saved Trip Itineraries</h2>
             <ul id="itineraryList">
                 {{#each trips}}
-                    {{#unless this.itinerary}}
                         <li>
-                            Depart: {{this.depcity}} <br>
-                            Destination: {{this.destcity}} <br>
-                            Depart date: {{this.departdate}} <br>
-                            Return date: {{this.returndate}} <br>
-                            Number of volunteers: {{this.numvol}} <br>
-
-                            <form action="trips/update/{{this.id}}?_method=PUT" method="POST">
-                                <input type="hidden" name="itinerary" value="true">
-                                <button type="submit" class="submit">Create your itinerary</button>
-                            </form>
-                        </li>
-                    {{/unless}}
-                {{/each}}
-            </ul>
-        </div>
-        <div id="itin" class="col-md-6">
-            <h2>Your itinerary</h2>
-            <ul>
-                {{#each trips}}
-                    {{#if this.itinerary}}
-                        <li>
-                            Depart: {{this.depcity}} <br>
-                            Destination: {{this.destcity}} <br>
-                            Depart date: {{this.departdate}} <br>
-                            Return date: {{this.returndate}} <br>
-                            Number of volunteers: {{this.numvol}} <br>
+                            Depart: {{this.usersOrigin}} <br>
+                            Destination: {{this.usersDestination}} <br>
+                            Depart Date: {{this.departDate}} <br>
+                            Return Date: {{this.returnDate}} <br>
+                            Departing Airline: {{this.departFly}} <br>
+                            Depart Flight Number: {{this.flyNumber1}} <br>
+                            Returning Airline: {{this.returnFly}} <br>
+                            Return Flight Number: {{this.flyNumber2}} <br>
+                            Hotel/Rental: {{this.hotel}} <br>
+                            Hotel/Rental Address: {{this.hotAdress}} <br>
+                            Hotel/Rental Phone: {{this.hotPhone}} <br>
+                            Volunteer Organization: {{this.volOrg}} <br>
+                            Event Date: {{this.volDate}} <br>
+                            Organization Address: {{this.volAddress}} <br>
+                            Number of Volunteers: {{this.volunteers}} <br>
                             {{> trips/delete-trip}}
                         </li>
-                    {{/if}}
                 {{/each}}
             </ul>
         </div>
     </div>
+{{else}}
+    <h2 class="please">Please log in or sign up!</h2>
+{{/if}}
 

@@ -142,6 +142,13 @@ a#homePage{
 	float: left;
 }
 
+.please {
+	color: white;
+	font-size: 32px;
+	padding:20px;
+	background-color:rgba(0, 128, 128, 0.5);
+}
+
 iframe{
 	margin: 0;
 	padding: 0;
