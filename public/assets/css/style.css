@@ -4,13 +4,22 @@ body {
 }
 header{
 	width:100%;
-	padding:40px 0px;;
+	padding:40px 0px;
 	color:white;
 	text-align:center;
 	height:200px;
 }
 h1{
 	color: white;
+}
+
+h2{
+	font-size:36px;
+}
+
+.whatWeDo{
+	color: black;
+	font-size:48px;
 }
 
 .sign > a {
@@ -28,12 +37,7 @@ h1{
 	text-align:center;
 	font-size: 64px;
 }
-nav ul{
-	overflow:hidden;
-	padding:20px;
-	text-align:center;
-	margin:0;	
-}
+
 .sign > a{
 	text-decoration: none;
 	color:white;
@@ -65,17 +69,12 @@ a:active{
 	padding:5px;
 }
 
-/*nav ul li{
-	display:inline-block;
-	padding: 20px;
-	float:right;
-} */
 #login{
 	float:right;
 }
 .mainContent{
 	background: white;
-	height:400px;
+	height:450px;
 	width:100%;
 	margin-top:5%;
 }
@@ -83,9 +82,27 @@ a:active{
 	margin-top: 20%;
 }
 #information{
-	padding:30px 30px;
+	padding:20px;
 	text-align:center;
+	height: 600px;
 }
+
+#header{
+	padding-top: 20px;
+	color: white;
+	float: right;
+}
+
+.form-group{
+	color: white;
+	font-size: 18px;
+}
+
+label{
+	color: white;
+	font-size: 18px;
+}
+
 #flights{
 	background-color: rgba(0, 128, 128, 0.2);
 	text-align: center;
@@ -93,6 +110,8 @@ a:active{
 .container{
 	background-color: rgba(0, 128, 128, 0.2);
 	text-align: center;
+	height: 100%;
+	width: 100%;
 }
 #itinCreate{
 	padding:20px;
@@ -109,19 +128,23 @@ a:active{
 	color:white;
 	background-color:rgba(0, 128, 128, 0.5);
 }
+
 ul {
 	list-style: none;
+	font-size: 18px;
+	color: white;
 }
 
 .awesomplete {
-	color: black
+	color: white;
+	font-size: 18px;
 }
 
 #usersOrigin #usersDestination {
-	color:black;
+	color:white;
 }
 
-.submit {
+/*.submit {
 	background-color: #40e657;
 	color: whitesmoke;
 }
@@ -129,6 +152,10 @@ ul {
 .submit:hover {
 	background-color: whitesmoke;
 	color: #40e657;
+}*/
+
+p#footNote{
+	color: white;
 }
 
 p.sign{
