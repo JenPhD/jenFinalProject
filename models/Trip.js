@@ -5,25 +5,31 @@ const Schema = mongoose.Schema;
 
 // Create trip schema
 const TripSchema = new Schema({
+    //user id
+    _userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
     // users origin
     usersOrigin: {
         type: String,
-        required:true
+        required: "Origin city is required"
     },
+
     //destination city
     usersDestination: {
         type: String,
-        required:true
+        required: "Destination city is required"
     },
     //depart date
     departDate: {
         type: Date,
-        required:true
+        required: "Depart date is required"
     },
     //return date
     returnDate: {
         type: Date,
-        required:true
+        required: "Return date is required"
     },
 
     //departing airline
@@ -60,6 +66,7 @@ const TripSchema = new Schema({
     volunteers: Number
 });
 
-
-// export the schema
-module.exports = TripSchema;
+// Create the Trip model with the TripSchema
+const Trip = mongoose.model('Trip', TripSchema);
+// export the model
+module.exports = Trip;
