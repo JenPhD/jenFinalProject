@@ -1,7 +1,5 @@
 // require mongoose
 const mongoose = require('mongoose');
-//require Trip Schema
-const Trip = require('./Trip');
 // create Schema class
 const Schema = mongoose.Schema;
 
