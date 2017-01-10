@@ -23,20 +23,8 @@ router.get('/volunteer', function(req,res) {
 });
 
 //Get, renders flights
-router.get('/flights', function(req,res) {
-    res.render('trips/flights', {
-        //keep logged_in
-        logged_in: req.session.logged_in,
-        // the username to the session
-        name: req.session.name,
-        // and the user's email.
-        email: req.session.email
-    });
-});
-
-//Get, renders hotels
-router.get('/hotels', function(req,res) {
-    res.render('trips/hotels', {
+router.get('/expedia', function(req,res) {
+    res.render('trips/expedia', {
         //keep logged_in
         logged_in: req.session.logged_in,
         // the username to the session
