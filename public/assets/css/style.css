@@ -144,6 +144,16 @@ ul {
 	color:white;
 }
 
+div#vol.row{
+	color: white;
+}
+div#link.row{
+	color: white;
+	font-size: 18px;
+}
+a{
+	color: white;
+}
 /*.submit {
 	background-color: #40e657;
 	color: whitesmoke;
