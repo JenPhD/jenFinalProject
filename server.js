@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const https = require('https');
+const gulp = require('gulp');
 
 //instantiate app
 const app = express();
