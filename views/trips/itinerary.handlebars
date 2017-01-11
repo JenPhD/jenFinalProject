@@ -3,7 +3,7 @@
 </div>
 
 {{#if logged_in}}
-<form id="itinCreate" class="create-update-form" action="trips/itinerary/create" method="POST">
+<form id="itinCreate" class="create-update-form" action="/trips/create" method="POST">
         <div class="form-group">
             <div class="row">
                 <div class="col-md-4">
@@ -123,7 +123,10 @@
                             Event Date: {{this.volDate}} <br>
                             Organization Address: {{this.volAddress}} <br>
                             Number of Volunteers: {{this.volunteers}} <br>
-                            {{> trips/delete-trip}}
+                            <form action="delete/{{this.id}}?_method=DELETE" method="POST">
+                                <input type="hidden" name="delete" value="true">
+                                <button type="submit" class="submit">Delete This Itinerary</button>
+                            </form>
                         </li>
                 {{/each}}
             </ul>

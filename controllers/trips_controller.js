@@ -80,7 +80,7 @@ router.get('/itinerary', function (req, res) {
 //Use the Trip schema to create a trip based on what's
 //passed in req.body ()
 
-router.post ('/trips/itinerary/create', function (req, res) {
+router.post ('/create', function (req, res) {
     const newTrip = new Trip ({
       usersOrigin: req.body.usersOrigin,
       usersDestination: req.body.usersDestination,
@@ -98,22 +98,23 @@ router.post ('/trips/itinerary/create', function (req, res) {
       volAddress: req.body.volAddress,
       volunteers: req.body.volunteers,
     });
-        newTrip.save(function(req, res) {
-          //console.log('saving trip', err);
-            res.redirect('/trips/itinerary');
-        })
+    console.log('newTrip::', newTrip);
+    newTrip.save(function(err){
+      console.log('saving trip', err);
+      res.redirect('/trips/itinerary');
+    })
 });
 
 //Use the Trip Schema to delete a trip
 //based on the id passed in the url
-router.delete('/destroy/:id', function(req,res) {
-    Trip.remove(
-        { _id }
-    )
-    // connect it to this .then.
-        .then(function() {
-            res.redirect('/itinerary');
-        })
+router.delete('/delete/:id', function(req, res) {
+  let _id = req.params.id;
+  console.log(_id);
+  Trip.find({ _id: req.params.id}).remove()
+  // connect it to this .then.
+    .then(function() {
+      res.redirect('/trips/itinerary');
+    })
 });
 
 module.exports = router;
